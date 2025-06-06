@@ -38,11 +38,11 @@
 
 @layer components {
   .container-custom {
-    @apply container mx-auto px-4 md:px-8;
+    @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
   
   .section {
-    @apply py-12 md:py-16 lg:py-24;
+    @apply py-12 md:py-16 lg:py-24 w-full;
   }
   
   .btn {
@@ -63,5 +63,22 @@
   
   .card {
     @apply bg-white rounded-xl shadow-md transition-all duration-300 hover:shadow-lg;
+  }
+}
+
+@layer utilities {
+  .animate-scroll {
+    width: max-content;
+    display: flex;
+    animation: scroll-left 40s linear infinite;
+  }
+
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
   }
 }

@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
+// Update the import path if Navbar is located elsewhere, for example:
 import Navbar from './Navbar';
+// Or, if Navbar does not exist, create it at src/components/Navbar.tsx
 import Footer from './Footer';
-import MobileMenu from './MobileMenu';
 
 const Layout: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,30 +17,9 @@ const Layout: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
-  };
-
   return (
     <div className="flex flex-col min-h-screen">
-      <Navbar 
-        isScrolled={isScrolled} 
-        isMobileMenuOpen={isMobileMenuOpen}
-        toggleMobileMenu={toggleMobileMenu}
-      />
-      
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <MobileMenu 
-            isOpen={isMobileMenuOpen} 
-            onClose={closeMobileMenu}
-          />
-        )}
-      </AnimatePresence>
+      <Navbar isScrolled={isScrolled} />
       
       <main className="flex-grow">
         <Outlet />

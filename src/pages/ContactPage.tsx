@@ -1,10 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Mail, Phone, Clock } from 'lucide-react';
-import SectionHeader from '../components/common/SectionHeader';
-import ContactForm from '../components/common/ContactForm';
+import { MapPin, Mail, Phone, Clock, ChevronDown } from 'lucide-react';
+import SectionHeader from '../components/SectionHeader';
+// import ContactForm from '../components/common/ContactForm';
+// Update the import path below to the correct location of ContactForm, for example:
+import ContactForm from '../components/ContactForm';
+// Or, if ContactForm does not exist, create it at the expected path.
 
 const ContactPage: React.FC = () => {
+  // State to track which FAQ is expanded
+  const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
+
+  // FAQ data
+  const faqs = [
+    {
+      question: "What industries do you work with?",
+      answer: "We work with clients across various industries including retail, healthcare, financial services, manufacturing, logistics, e-commerce, and more. Our data solutions are adaptable to the specific needs and challenges of each industry."
+    },
+    {
+      question: "How long does a typical project take?",
+      answer: "Project timelines vary depending on scope and complexity. A small BI implementation might take 4-6 weeks, while a comprehensive data transformation could span several months. We'll provide detailed timelines during our initial consultation."
+    },
+    {
+      question: "Do you offer ongoing support after project completion?",
+      answer: "Yes, we offer various support and maintenance options to ensure the continued success of your data solutions. We can provide training, regular check-ins, system monitoring, updates, and dedicated support as needed."
+    },
+    {
+      question: "How do you handle data security and privacy?",
+      answer: "We take data security and privacy extremely seriously. We implement robust security measures, follow industry best practices, and ensure compliance with relevant regulations like GDPR, HIPAA, and CCPA depending on your industry and location."
+    },
+    {
+      question: "Can you work with our existing systems and tools?",
+      answer: "Yes, we design our solutions to integrate with your existing infrastructure whenever possible. We have experience working with a wide range of data systems, analytics platforms, and business applications."
+    },
+    {
+      question: "What makes BeamX Solutions different from other data consultancies?",
+      answer: "We combine deep technical expertise with business acumen to deliver solutions that not only solve technical challenges but also drive real business value. Our collaborative approach, focus on knowledge transfer, and commitment to long-term success set us apart."
+    }
+  ];
+
   return (
     <>
       {/* Hero Section */}
@@ -31,6 +65,7 @@ const ContactPage: React.FC = () => {
       <section className="py-16 bg-white">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Contact Information (Now on the Left) */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -42,62 +77,61 @@ const ContactPage: React.FC = () => {
                 subtitle="We'd love to hear from you. Contact us using the form or the information below."
               />
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                <div className="bg-gray-50 p-6 rounded-xl">
-                  <div className="bg-primary bg-opacity-10 p-3 rounded-lg w-fit mb-4">
-                    <MapPin className="h-6 w-6 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2">Our Location</h3>
-                  <p className="text-gray-600">
-                    123 Business Ave, Suite 100<br />
-                    San Francisco, CA 94107
-                  </p>
-                </div>
-                
-                <div className="bg-gray-50 p-6 rounded-xl">
-                  <div className="bg-primary bg-opacity-10 p-3 rounded-lg w-fit mb-4">
-                    <Mail className="h-6 w-6 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2">Email Us</h3>
-                  <p className="text-gray-600 mb-1">
-                    <a href="mailto:info@beamxsolutions.com" className="hover:text-primary transition-colors">
-                      info@beamxsolutions.com
-                    </a>
-                  </p>
-                  <p className="text-gray-600">
-                    <a href="mailto:support@beamxsolutions.com" className="hover:text-primary transition-colors">
-                      support@beamxsolutions.com
-                    </a>
-                  </p>
-                </div>
-                
-                <div className="bg-gray-50 p-6 rounded-xl">
-                  <div className="bg-primary bg-opacity-10 p-3 rounded-lg w-fit mb-4">
-                    <Phone className="h-6 w-6 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2">Call Us</h3>
-                  <p className="text-gray-600 mb-1">
-                    <a href="tel:+14155550123" className="hover:text-primary transition-colors">
-                      (415) 555-0123
-                    </a>
-                  </p>
-                  <p className="text-gray-600">
-                    <a href="tel:+14155550124" className="hover:text-primary transition-colors">
-                      (415) 555-0124
-                    </a>
-                  </p>
-                </div>
-                
-                <div className="bg-gray-50 p-6 rounded-xl">
-                  <div className="bg-primary bg-opacity-10 p-3 rounded-lg w-fit mb-4">
-                    <Clock className="h-6 w-6 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2">Business Hours</h3>
-                  <p className="text-gray-600 mb-1">Monday - Friday: 9am - 5pm</p>
-                  <p className="text-gray-600">Saturday - Sunday: Closed</p>
-                </div>
+              {/* Contact Info Card */}
+              <div className="bg-gray-50 p-6 rounded-xl mb-6">
+                <h3 className="text-xl font-semibold mb-4">Contact Information</h3>
+                <ul className="space-y-4">
+                  <li className="flex items-start">
+                    <MapPin className="h-5 w-5 text-primary mr-3 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-600">
+                      123 Business Ave, Suite 100<br />
+                      San Francisco, CA 94107
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <Mail className="h-5 w-5 text-primary mr-3 flex-shrink-0" />
+                    <div>
+                      <p className="text-gray-600 mb-1">
+                        <a href="mailto:info@beamxsolutions.com" className="hover:text-primary transition-colors">
+                          info@beamxsolutions.com
+                        </a>
+                      </p>
+                      <p className="text-gray-600">
+                        <a href="mailto:support@beamxsolutions.com" className="hover:text-primary transition-colors">
+                          support@beamxsolutions.com
+                        </a>
+                      </p>
+                    </div>
+                  </li>
+                  <li className="flex items-center">
+                    <Phone className="h-5 w-5 text-primary mr-3 flex-shrink-0" />
+                    <div>
+                      <p className="text-gray-600 mb-1">
+                        <a href="tel:+14155550123" className="hover:text-primary transition-colors">
+                          (415) 555-0123
+                        </a>
+                      </p>
+                      <p className="text-gray-600">
+                        <a href="tel:+14155550124" className="hover:text-primary transition-colors">
+                          (415) 555-0124
+                        </a>
+                      </p>
+                    </div>
+                  </li>
+                </ul>
               </div>
               
+              {/* Business Hours Card */}
+              <div className="bg-gray-50 p-6 rounded-xl mb-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <Clock className="h-5 w-5 text-primary" />
+                  <h3 className="text-xl font-semibold">Business Hours</h3>
+                </div>
+                <p className="text-gray-600 mb-1">Monday - Friday: 9am - 5pm</p>
+                <p className="text-gray-600">Saturday - Sunday: Closed</p>
+              </div>
+              
+              {/* Follow Us Card */}
               <div className="bg-gray-50 p-6 rounded-xl">
                 <h3 className="text-xl font-semibold mb-4">Follow Us</h3>
                 <div className="flex space-x-4">
@@ -125,6 +159,7 @@ const ContactPage: React.FC = () => {
               </div>
             </motion.div>
             
+            {/* Contact Form (Now on the Right) */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -162,7 +197,7 @@ const ContactPage: React.FC = () => {
         </div>
       </section>
       
-      {/* FAQ Section */}
+      {/* FAQ Section (Dropdown) */}
       <section className="bg-white py-16">
         <div className="container-custom">
           <SectionHeader
@@ -171,43 +206,40 @@ const ContactPage: React.FC = () => {
             center
           />
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {[
-              {
-                question: "What industries do you work with?",
-                answer: "We work with clients across various industries including retail, healthcare, financial services, manufacturing, logistics, e-commerce, and more. Our data solutions are adaptable to the specific needs and challenges of each industry."
-              },
-              {
-                question: "How long does a typical project take?",
-                answer: "Project timelines vary depending on scope and complexity. A small BI implementation might take 4-6 weeks, while a comprehensive data transformation could span several months. We'll provide detailed timelines during our initial consultation."
-              },
-              {
-                question: "Do you offer ongoing support after project completion?",
-                answer: "Yes, we offer various support and maintenance options to ensure the continued success of your data solutions. We can provide training, regular check-ins, system monitoring, updates, and dedicated support as needed."
-              },
-              {
-                question: "How do you handle data security and privacy?",
-                answer: "We take data security and privacy extremely seriously. We implement robust security measures, follow industry best practices, and ensure compliance with relevant regulations like GDPR, HIPAA, and CCPA depending on your industry and location."
-              },
-              {
-                question: "Can you work with our existing systems and tools?",
-                answer: "Yes, we design our solutions to integrate with your existing infrastructure whenever possible. We have experience working with a wide range of data systems, analytics platforms, and business applications."
-              },
-              {
-                question: "What makes BeamX Solutions different from other data consultancies?",
-                answer: "We combine deep technical expertise with business acumen to deliver solutions that not only solve technical challenges but also drive real business value. Our collaborative approach, focus on knowledge transfer, and commitment to long-term success set us apart."
-              }
-            ].map((faq, index) => (
+          <div className="max-w-4xl mx-auto">
+            {faqs.map((faq, index) => (
               <motion.div
                 key={index}
-                className="bg-gray-50 p-6 rounded-xl"
+                className="bg-gray-50 rounded-xl mb-4 overflow-hidden"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <h3 className="text-xl font-semibold mb-3">{faq.question}</h3>
-                <p className="text-gray-600">{faq.answer}</p>
+                <button
+                  className="w-full flex justify-between items-center p-6 text-left focus:outline-none"
+                  onClick={() => setExpandedFAQ(expandedFAQ === index ? null : index)}
+                  aria-expanded={expandedFAQ === index}
+                  aria-controls={`faq-answer-${index}`}
+                >
+                  <h3 className={`text-xl font-semibold ${expandedFAQ === index ? 'text-primary' : 'text-gray-900'}`}>
+                    {faq.question}
+                  </h3>
+                  <ChevronDown
+                    className={`h-5 w-5 text-gray-500 transform transition-transform duration-300 ${
+                      expandedFAQ === index ? 'rotate-180 text-primary' : ''
+                    }`}
+                  />
+                </button>
+                <motion.div
+                  id={`faq-answer-${index}`}
+                  initial={{ height: 0 }}
+                  animate={{ height: expandedFAQ === index ? 'auto' : 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="overflow-hidden"
+                >
+                  <p className="text-gray-600 px-6 pb-6">{faq.answer}</p>
+                </motion.div>
               </motion.div>
             ))}
           </div>

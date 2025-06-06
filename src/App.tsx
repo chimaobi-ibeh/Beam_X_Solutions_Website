@@ -1,12 +1,13 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Layout from './components/layout/Layout';
+// Make sure the path and filename are correct; update if needed
+import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
-import CaseStudiesPage from './pages/CaseStudiesPage';
+import BlogPage from './pages/BlogPage';
 import ContactPage from './pages/ContactPage';
-import ScrollToTop from './components/utils/ScrollToTop';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="services" element={<ServicesPage />} />
-          <Route path="case-studies" element={<CaseStudiesPage />} />
+          <Route path="blog" element={<BlogPage />} />
           <Route path="contact" element={<ContactPage />} />
         </Route>
       </Routes>

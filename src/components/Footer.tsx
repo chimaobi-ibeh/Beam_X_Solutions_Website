@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Layers, Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
@@ -9,10 +9,11 @@ const Footer: React.FC = () => {
         <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Company Info */}
           <div>
-            <div className="flex items-center gap-2 mb-6">
-              <Layers className="h-8 w-8 text-primary" />
-              <span className="font-heading font-bold text-xl">BeamX Solutions</span>
-            </div>
+            <img 
+              src="/beam-x-logo3.jpg" // Replace with your actual logo filename in public/
+              alt="BeamX Solutions Logo"
+              className="h-12 w-auto max-w-[200px] mb-6" // Larger height for rectangular logo
+            />
             <p className="text-gray-400 mb-6">
               Empowering businesses to unlock the full potential of their data through expert data strategy, 
               business intelligence, and AI solutions.
@@ -41,7 +42,7 @@ const Footer: React.FC = () => {
                 { name: 'Home', path: '/' },
                 { name: 'About Us', path: '/about' },
                 { name: 'Services', path: '/services' },
-                { name: 'Case Studies', path: '/case-studies' },
+                { name: 'Blog', path: '/blog' },
                 { name: 'Contact', path: '/contact' },
               ].map((item) => (
                 <li key={item.name}>
@@ -108,7 +109,7 @@ const Footer: React.FC = () => {
         
         <div className="py-6 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-500 text-sm mb-4 md:mb-0">
-            &copy; {new Date().getFullYear()} BeamX Solutions. All rights reserved.
+            © {new Date().getFullYear()} BeamX Solutions. All rights reserved.
           </p>
           <div className="flex space-x-6">
             <a href="#" className="text-gray-500 hover:text-primary text-sm transition-colors">
