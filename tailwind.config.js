@@ -58,6 +58,15 @@ export default {
         'gradient-primary': 'linear-gradient(135deg, #0F5AE0 0%, #06D6A0 100%)',
         'gradient-dark': 'linear-gradient(135deg, #0A43A8 0%, #05A37A 100%)',
       },
+      container: {
+        'custom': {
+          DEFAULT: '1rem',
+          sm: '2rem',
+          lg: '4rem',
+          xl: '5rem',
+          '2xl': '6rem',
+        },
+      },
     },
   },
   plugins: [],

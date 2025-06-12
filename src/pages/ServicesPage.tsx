@@ -4,21 +4,23 @@ import { Lightbulb, BarChart, BrainCircuit, Database, Server, Users, ArrowRight 
 import SectionHeader from '../components/SectionHeader';
 import Button from '../components/Button';
 import CTASection from '../components/CTASection';
+import ServiceCard from '../components/ServiceCard';
 
 const ServicesPage: React.FC = () => {
   const services = [
     {
-      icon: <Lightbulb className="h-16 w-16 text-primary" />,
+      icon: <Lightbulb className="h-8 w-8 text-primary" />,
       title: "Analytics Audit",
       description: "We assess the health of your data ecosystem from data quality to pipeline integrity to identify gaps, inefficiencies, and hidden opportunities. Get a clear view of what's working and what needs to evolve.",
       features: [
         "Data quality assessment",
         "Pipeline performance review",
         "Identify hidden insight gaps"
-      ]
+      ],
+      imageUrl: "/analytics-audit.png"
     },
     {
-      icon: <BarChart className="h-16 w-16 text-primary" />,
+      icon: <BarChart className="h-8 w-8 text-primary" />,
       title: "Dashboard Development",
       description: "Turn complexity into clarity. We build intuitive, interactive dashboards that surface key insights, empower decision-makers, and keep your metrics moving in the right direction.",
       features: [
@@ -26,10 +28,11 @@ const ServicesPage: React.FC = () => {
         "Interactive visualizations",
         "Real-time data integration",
         "Performance optimization"
-      ]
+      ],
+      imageUrl: "/dashboard-development.png"
     },
     {
-      icon: <BrainCircuit className="h-16 w-16 text-primary" />,
+      icon: <BrainCircuit className="h-8 w-8 text-primary" />,
       title: "Model Development",
       description: "From fine-tuned GPTs to powerful machine learning models, we build solutions that think, predict, and learn, tailored to your business objectives. Let your data do the heavy lifting.",
       features: [
@@ -37,17 +40,19 @@ const ServicesPage: React.FC = () => {
         "GPT fine-tuning",
         "Model optimization",
         "Performance monitoring"
-      ]
+      ],
+      imageUrl: "https://images.pexels.com/photos/355948/pexels-photo-355948.jpeg?auto=compress&cs=tinysrgb&w=600&h=400"
     },
     {
-      icon: <Users className="h-16 w-16 text-primary" />,
+      icon: <Users className="h-8 w-8 text-primary" />,
       title: "Live Trainings",
       description: "Empower your team with hands-on training in analytics tools, AI systems, and data storytelling. We don't just deliver solutions, we build capability.",
       features: [
         "Hands-on analytics workshops",
         "Practical AI system training",
         "Data storytelling skill sessions"
-      ]
+      ],
+      imageUrl: "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=600&h=400"
     }
   ];
 
@@ -75,34 +80,24 @@ const ServicesPage: React.FC = () => {
       </section>
       
       {/* Services Grid */}
-      <section className="section bg-white">
+      <section className="section bg-gray-50">
         <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <SectionHeader
+            title="What We Offer"
+            subtitle="Explore our range of services designed to transform your data into actionable insights."
+            center
+          />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mt-12">
             {services.map((service, index) => (
-              <motion.div
+              <ServiceCard
                 key={index}
-                className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <div className="bg-primary bg-opacity-10 p-4 rounded-lg w-fit mb-6">
-                  {service.icon}
-                </div>
-                
-                <h3 className="text-2xl font-semibold mb-4">{service.title}</h3>
-                <p className="text-gray-600 mb-6">{service.description}</p>
-                
-                <div className="space-y-3">
-                  {service.features.map((feature, i) => (
-                    <div key={i} className="flex items-center text-gray-600">
-                      <ArrowRight className="h-5 w-5 text-primary mr-2 flex-shrink-0" />
-                      <span>{feature}</span>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
+                icon={service.icon}
+                title={service.title}
+                description={service.description}
+                features={service.features}
+                imageUrl={service.imageUrl}
+                delay={index}
+              />
             ))}
           </div>
         </div>

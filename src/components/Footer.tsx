@@ -36,7 +36,7 @@ const Footer: React.FC = () => {
           
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-6">Quick Links</h3>
+            <h3 className="text-lg font-semibold text-white mb-6">Quick Links</h3>
             <ul className="space-y-4">
               {[
                 { name: 'Home', path: '/' },
@@ -59,7 +59,7 @@ const Footer: React.FC = () => {
           
           {/* Services */}
           <div>
-            <h3 className="text-lg font-semibold mb-6">Our Services</h3>
+            <h3 className="text-lg font-semibold text-white mb-6">Our Services</h3>
             <ul className="space-y-4">
               {[
                 { name: 'Data Strategy', path: '/services' },
@@ -82,7 +82,7 @@ const Footer: React.FC = () => {
           
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-semibold mb-6">Contact Us</h3>
+            <h3 className="text-lg font-semibold text-white mb-6">Contact Us</h3>
             <ul className="space-y-4">
               <li className="flex items-start">
                 <MapPin className="h-5 w-5 text-primary mr-3 mt-0.5 flex-shrink-0" />
@@ -111,17 +111,6 @@ const Footer: React.FC = () => {
           <p className="text-gray-500 text-sm mb-4 md:mb-0">
             © {new Date().getFullYear()} BeamX Solutions. All rights reserved.
           </p>
-          <div className="flex space-x-6">
-            <a href="#" className="text-gray-500 hover:text-primary text-sm transition-colors">
-              Privacy Policy
-            </a>
-            <a href="#" className="text-gray-500 hover:text-primary text-sm transition-colors">
-              Terms of Service
-            </a>
-            <a href="#" className="text-gray-500 hover:text-primary text-sm transition-colors">
-              Cookie Policy
-            </a>
-          </div>
         </div>
       </div>
     </footer>
